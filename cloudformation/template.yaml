@@ -1,0 +1,56 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Template usado para desplegar instancias EC2 basado de cloudcamp.
+
+Parameters: #Variables que quiero que un user las ingrese o les puedo dar valores por defecto
+  KeyName:
+    Description: Nombre de llave usada para conectarse via SSH a la instancia EC2.
+    Type: AWS::EC2::KeyPair::KeyName #Drop down que nos muestra las llaves
+    ConstraintDescription: Debe ser el nombre de una llave existente. #Indicarle a user que poner
+  InstanceType:
+    Description: Tipo de instancia EC2.
+    Type: String
+    Default: t3.micro
+    AllowedValues: [t2.micro, t3.micro] #Parametros disponibles en la lista
+  ImageId:
+    Description: ID de la AMI.
+    Type: String
+    Default: ami-05fa00d4c63e32376
+  InstanceSecurityGroup:
+    Type: AWS::EC2::SecurityGroup::GroupName
+    Description: Nombre del sg a usar.
+    ConstraintDescription: Debe ser el nombre de un sg existente. #Indicarle a user que poner
+  InstanceAZ:
+    Type: AWS::EC2::AvailabilityZone::Name
+    Description: Nombre del AZ a usar.
+    ConstraintDescription: Debe ser el nombre de un AZ existente. 
+
+Resources:
+  EC2InstanceA: 
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType: !Ref InstanceType
+      ImageId: !Ref ImageId
+      KeyName: !Ref KeyName
+      SecurityGroups: [!Ref "InstanceSecurityGroup"]
+      AvailabilityZone: !Ref InstanceAZ
+      Tags:
+        - Key: Name 
+          Value: lab-A
+  EC2InstanceB: 
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType: !Ref InstanceType
+      ImageId: !Ref ImageId
+      KeyName: !Ref KeyName
+      SecurityGroups: [!Ref "InstanceSecurityGroup"]
+      Tags:
+        - Key: Name 
+          Value: lab-B
+
+Outputs:
+  InstanceIdA:
+    Description: InstanceId de la Instancia EC2 A.
+    Value: !Ref "EC2InstanceA"
+  InstanceIdB:
+    Description: InstanceId de la Instancia EC2 B.
+    Value: !Ref "EC2InstanceB"
