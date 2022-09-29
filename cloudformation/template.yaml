@@ -22,7 +22,7 @@ Parameters: #Variables que quiero que un user las ingrese o les puedo dar valore
   InstanceAZ:
     Type: AWS::EC2::AvailabilityZone::Name
     Description: Nombre del AZ a usar.
-    ConstraintDescription: Debe ser el nombre de un AZ existente. 
+    ConstraintDescription: Debe ser el nombre de un AZ de us-east-1. 
 
 Resources:
   EC2InstanceA: 
