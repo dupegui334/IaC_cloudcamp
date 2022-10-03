@@ -13,9 +13,10 @@ provider "aws" {
 
 resource "aws_security_group" "ejemplo_sg" {
     description = "SG creado en clase Cloudcamp"
-    ingress = {
+    ingress {
         from_port = 22
         to_port = 22
         protocol = "tcp"
+        cidr_blocks = ["0.0.0.0/0"]
     }
 }
