@@ -17,6 +17,17 @@ resource "aws_security_group" "ejemplo_sg" {
         from_port = 22
         to_port = 22
         protocol = "tcp"
-        cidr_blocks = ["0.0.0.0/0"]
+        cidr_blocks = var.bloque_cidr
     }
+}
+
+variable "bloque_cidr" {
+    type = list(string)
+    default = ["0.0.0.0/0"]
+    description = "Range CIDR for SG"
+}
+
+output "name_sg"{
+    value = aws_security_group.ejemplo_sg.name
+
 }

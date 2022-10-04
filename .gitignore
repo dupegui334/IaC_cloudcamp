@@ -1,0 +1,4 @@
+ejemplos-terraform/.terraform/
+ejemplos-terraform/.terraform.lock.hcl
+ejemplos-terraform/terraform.tfstate
+ejemplos-terraform/terraform.tfstate.backup
