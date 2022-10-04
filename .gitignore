@@ -1,4 +1,4 @@
-ejemplos-terraform/.terraform/
+ejemplos-terraform/.terraform/providers/registry.terraform.io/hashicorp/aws/4.33.0/windows_386
 ejemplos-terraform/.terraform.lock.hcl
 ejemplos-terraform/terraform.tfstate
 ejemplos-terraform/terraform.tfstate.backup
