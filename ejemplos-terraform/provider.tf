@@ -7,8 +7,9 @@ terraform {
   }
   backend "s3" {
     bucket = "tf-state-david"
-    key = "remote-state"
+    key = "remote-state/terraform.tfstate"
     region = "us-east-1"
+    dynamodb_table = "terraform-lock"
   }
 }
 
